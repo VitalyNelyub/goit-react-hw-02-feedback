@@ -1,5 +1,46 @@
-import FeedBackCard from 'FeedBack/FeedBack';
+import { Component } from 'react';
+import css from '../FeedBack/FeedBackCard.module.css';
+import Buttons from 'Buttons/Buttons';
+import FeedbackStatistics from 'Statistics/Statistics';
 
-export const App = () => {
-  return <FeedBackCard />;
-};
+class App extends Component {
+  state = {
+    good: 0,
+    neutral: 0,
+    bad: 0,
+  };
+
+  totalForShowStat = () =>
+    this.state.good + this.state.neutral + this.state.bad;
+
+  handleClickGood = () => this.setState(prev => ({ good: prev.good + 1 }));
+
+  handleClickNeutral = () =>
+    this.setState(prev => ({ neutral: prev.neutral + 1 }));
+
+  handleClickBad = () => this.setState(prev => ({ bad: prev.bad + 1 }));
+
+  render() {
+    return (
+      <div className={css.feedback}>
+        <h1 className={css.title}>Please leave your feedback</h1>
+        <Buttons
+          handleClickGood={this.handleClickGood}
+          handleClickNeutral={this.handleClickNeutral}
+          handleClickBad={this.handleClickBad}
+        />
+        {this.totalForShowStat() > 0 ? (
+          <FeedbackStatistics
+            good={this.state.good}
+            neutral={this.state.neutral}
+            bad={this.state.bad}
+          />
+        ) : (
+          <h2 className={css.secondary__title}>There is no feedback</h2>
+        )}
+      </div>
+    );
+  }
+}
+
+export default App;
