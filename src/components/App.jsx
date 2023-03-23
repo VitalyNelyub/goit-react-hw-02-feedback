@@ -1,7 +1,9 @@
 import { Component } from 'react';
-import css from '../FeedBack/FeedBackCard.module.css';
-import Buttons from 'Buttons/Buttons';
-import FeedbackStatistics from 'Statistics/Statistics';
+import css from './FeedBack/FeedBackCard.module.css';
+import Buttons from './Buttons/Buttons'
+import FeedbackStatistics from 'components/Statistics/Statistics';
+import Notification from './Notifi/Notification'
+
 
 class App extends Component {
   state = {
@@ -36,7 +38,8 @@ class App extends Component {
             bad={this.state.bad}
           />
         ) : (
-          <h2 className={css.secondary__title}>There is no feedback</h2>
+            <Notification message="There is no feedback"/>
+          // <h2 className={css.secondary__title}>There is no feedback</h2>
         )}
       </div>
     );
