@@ -2,8 +2,9 @@ import { Component } from 'react';
 import css from '../FeedBack/FeedBackCard.module.css';
 
 class Buttons extends Component {
-    render() {
-    //   console.log(this.props);
+  render() {
+    // console.log(this.props.handleClickButton)
+    // console.log(this.props.type)
     return (
       <div className={css.feedback__buttons}>
         <button

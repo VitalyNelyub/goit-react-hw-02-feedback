@@ -1,9 +1,8 @@
 import { Component } from 'react';
 import css from './FeedBack/FeedBackCard.module.css';
-import Buttons from './Buttons/Buttons'
+import Buttons from './Buttons/Buttons';
 import FeedbackStatistics from 'components/Statistics/Statistics';
-import Notification from './Notifi/Notification'
-
+import Notification from './Notifi/Notification';
 
 class App extends Component {
   state = {
@@ -14,6 +13,9 @@ class App extends Component {
 
   totalForShowStat = () =>
     this.state.good + this.state.neutral + this.state.bad;
+
+  // handleClickButton = type =>
+  //   this.setState(prev => ({ [type]: prev[type] + 1 }));
 
   handleClickGood = () => this.setState(prev => ({ good: prev.good + 1 }));
 
@@ -30,6 +32,8 @@ class App extends Component {
           handleClickGood={this.handleClickGood}
           handleClickNeutral={this.handleClickNeutral}
           handleClickBad={this.handleClickBad}
+          // handleClickButton={this.handleClickButton}
+          // type={this.state}
         />
         {this.totalForShowStat() > 0 ? (
           <FeedbackStatistics
@@ -38,8 +42,7 @@ class App extends Component {
             bad={this.state.bad}
           />
         ) : (
-            <Notification message="There is no feedback"/>
-          // <h2 className={css.secondary__title}>There is no feedback</h2>
+          <Notification message="There is no feedback" />
         )}
       </div>
     );
